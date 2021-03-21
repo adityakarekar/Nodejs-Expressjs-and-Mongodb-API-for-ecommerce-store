@@ -25,3 +25,33 @@ const Category = require("../model/category")
       res.json(categories);
     });
   };
+
+  exports.getCategoryById = (req, res, next, id) => {
+    Category.findById(id)
+      
+      .exec((err, categoryData) => {
+        if (err) {
+          return res.status(400).json({
+            error: "Product not found"
+          });
+        }
+        req.category = categoryData; //global variable
+        next();
+      });
+  };      
+  
+
+  exports.removeCategory = (req, res) => {
+    const category = req.category;
+  
+    category.remove((err, category) => {
+      if (err) {
+        return res.status(400).json({
+          error: "Failed to delete this category"
+        });
+      }
+      res.json({
+        message: "Successfull deleted"
+      });
+    });
+  };

@@ -38,22 +38,22 @@ exports.createProduct =
 };
 
 
-{/*exports.getAllproduct =
+exports.getAllproduct =
    (req, res) => 
   {
     Product.find().exec((err, product) => {
       if (err) {
         return res.status(400).json({
-          error: "NO categories found"
+          error: "NO Products found"
         });
       }
       res.json(product);
     });
   };
-*/}
 
 
-{/*exports.getProductById = (req, res, next, id) => {
+
+exports.getProductById = (req, res, next, id) => {
   Product.findById(id)
     .populate("category")
     .exec((err, product) => {
@@ -65,10 +65,10 @@ exports.createProduct =
       req.product = product;
       next();
     });
-};      */}
+};      
 
 
-{/*exports.getProduct = (req, res) => {
+exports.getProduct = (req, res) => {
     req.product.photo = undefined;
     return res.json(req.product);
   };
@@ -87,7 +87,7 @@ exports.deleteProduct = (req, res) => {
     });
   });
 };
-*/}
+
 
 
 
